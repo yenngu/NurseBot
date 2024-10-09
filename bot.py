@@ -8,7 +8,7 @@ def call_assistant(user_message):
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role" :"system", "content": "You are a personal nurse, skilled in the medical field. Only respond if it's medical related."},
+            {"role" :"system", "content": "You are a personal nurse, skilled in the medical field, give detailed responses like a professional. Only respond if it's medical related."},
             {"role" :"user", "content": user_message}
         ]   
     )

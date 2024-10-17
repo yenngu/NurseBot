@@ -1,38 +1,108 @@
-.App {
+body {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(136, 184, 155);
+}
+
+.top-section {
+  display: block;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: auto;
+  margin-top: 10px;
+  height: 10vh;
+  background-color: rgb(66, 61, 61);
+  border-radius: 50px;
+  box-shadow: 5px 10px rgb(82, 80, 80);
+  width: 50%;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65vh; 
+  margin: auto;
+  width: 50%; 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+textarea {
+  width: 100%; 
+  height: 60%; 
+  border-radius: 10px;
+  border: 2px solid rgb(66, 61, 61);
+  padding: 10px;
+  font-size: 16px;
+  resize: none; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+}
+
+textarea:focus {
+  outline: none; 
+  border-color: rgb(82, 80, 80);
+  box-shadow: 0 0 5px rgba(82, 80, 80, 0.5); 
+}
+
+
+@media (max-width: 768px) {
+  .top-section, .result-container {
+    width: 90%; 
   }
-  to {
-    transform: rotate(360deg);
+
+  textarea {
+    height: 50%; 
   }
+}
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto; 
+  width: 50%; 
+}
+
+input {
+  width: 100%; 
+  padding: 10px; 
+  border: 2px solid rgb(66, 61, 61);
+  border-radius: 10px; 
+  font-size: 16px; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+}
+
+
+input:focus {
+  outline: none; 
+  border-color: rgb(82, 80, 80);
+  box-shadow: 0 0 5px rgba(82, 80, 80, 0.5); 
+}
+
+.submit-button {
+  margin-left: 10px; 
+  padding: 3px 15px; 
+  background-color: rgb(66, 61, 61); 
+  color: white; 
+  border: none; 
+  border-radius: 10px; 
+  cursor: pointer; 
+  font-size: 16px; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+.submit-button:hover {
+  background-color: rgb(82, 80, 80); 
+  transform: scale(1.05); 
+}
+
+.submit-button:focus {
+  outline: none; 
+  box-shadow: 0 0 5px rgba(82, 80, 80, 0.5); 
+}
+
+.submit-button:active {
+  background-color: rgb(50, 50, 50); 
+  transform: scale(0.95); 
 }

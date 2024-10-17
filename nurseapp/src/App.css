@@ -44,16 +44,6 @@ textarea:focus {
   box-shadow: 0 0 5px rgba(82, 80, 80, 0.5); 
 }
 
-
-@media (max-width: 768px) {
-  .top-section, .result-container {
-    width: 90%; 
-  }
-
-  textarea {
-    height: 50%; 
-  }
-}
 .user-container {
   display: flex;
   justify-content: center;
@@ -105,4 +95,14 @@ input:focus {
 .submit-button:active {
   background-color: rgb(50, 50, 50); 
   transform: scale(0.95); 
+}
+
+@media (max-width: 768px) {
+  .top-section, .result-container .user-container{
+    width: 90%; 
+  }
+
+  textarea {
+    height: 50%; 
+  }
 }

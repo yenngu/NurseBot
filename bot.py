@@ -1,5 +1,10 @@
 from openai import OpenAI
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
+
+app = Flask(__name__)
+CORS(app)
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -7,7 +12,7 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 stored_responses = []
 
 def call_assistant(user_message, stored_responses):
-    messages = [{"role": "system", "content": "You are a professional doctor that helps clients and provides detailed analysis"}]
+    messages = [{"role": "system", "content": "You are a professional doctor that helps clients and provides detailed analysis."}]
     for history in stored_responses:
         messages.append({"role": "user", "content": history['user']})
         messages.append({"role": "assistant", "content": history['assistant']})
@@ -20,21 +25,18 @@ def call_assistant(user_message, stored_responses):
     )
 
     response = completion.choices[0].message.content
-    print(response)
     stored_responses.append({"user": user_message, "assistant": response})
     return response
 
 
-while True:
-    userInput = input("What would you like to ask the NurseBot? (Type 'exit' to exit)")
+@app.route('/ask', methods = ['POST'])
+def ask_bot():
+    data = request.get_json()
+    user_message = data['message']
+    response = call_assistant(user_message, stored_responses)
+    return jsonify({'response': response})
     
-    if userInput.lower() == 'exit':
-        print("Thank you for using NurseBot")
-        break   
-    
-    call_assistant(userInput, stored_responses)
-    
-    
-    
+if __name__ == '__main__':
+    app.run(debug=True)
     
     
